@@ -15,7 +15,15 @@ namespace STC.Automation.Office.Outlook
     [WrapsCOM("Outlook.Application", Application.UUID)]
     public class Application : OfficeApplication
     {
-        //public const string UUID = "0006F03A-0000-0000-C000-000000000046"; // < -this is the official UUID but doesn't work on mine
+        /// <summary>
+        /// "C:\Program Files\Microsoft Office\root\Office16\MSOUTL.OLB"
+        ///
+        /// [uuid(00063001-0000-0000-C000-000000000046)]
+        /// interface _Application : IDispatch
+        ///
+        /// [uuid(0006F03A-0000-0000-C000-000000000046)]
+        /// coclass Application
+        /// </summary>
         public const string UUID = "00063001-0000-0000-C000-000000000046";
 
         private Explorers _explorers;

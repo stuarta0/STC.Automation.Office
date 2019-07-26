@@ -52,7 +52,14 @@ namespace STC.Automation.Office.Common
                     {
                         if (!SupportsInterface(objToWrap, req))
                         {
-                            throw new COMException(string.Format("Problem wrapping {0} object; does not support interface {{{1}}}.", WrapsProgId, req.ToString()));
+                            var comType = objToWrap.GetType();
+                            throw new COMException(
+                                string.Format("Problem wrapping {0} object; does not support interface {{{1}}}.\n\nAssembly: {2}\nGUID: {3}",
+                                              WrapsProgId,
+                                              req.ToString(),
+                                              comType.AssemblyQualifiedName,
+                                              comType.GUID)
+                            );
                         }
                     }
                 }
